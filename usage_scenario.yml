@@ -1,0 +1,24 @@
+---
+name: Green Metrics Sustainable Computing Experiment
+author: Student
+description: >
+  A simple controlled computational workload used to demonstrate
+  energy and environmental measurement using the Green Metrics Tool.
+
+services:
+  workload:
+    image: alpine:latest
+    command: >
+      sh -c "apk add --no-cache stress-ng &&
+      stress-ng --cpu 1 --timeout 10s"
+
+flow:
+  - name: Run computational workload
+    container: workload
+    commands:
+      - type: console
+        command: echo "Starting sustainable computing experiment"
+      - type: console
+        command: sleep 2
+      - type: console
+        command: echo "Computational workload completed"
